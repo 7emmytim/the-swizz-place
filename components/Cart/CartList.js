@@ -33,7 +33,7 @@ const CartList = ({ subtotal, next }) => {
                                     <tr key={item.id}>
                                         <td className="p-2">
                                             <div className="flex items-center">
-                                                <img src={item.image.url} className='hidden lg:inline-block h-16 w-16 shrink-0 mr-2 sm:mr-3 opacity-70' />
+                                                <img src={`http://localhost:1337${item.image.data.attributes.url}`} className='hidden lg:inline-block h-16 w-16 shrink-0 mr-2 sm:mr-3 opacity-70' />
                                                 <div className="text-md">
                                                     <p className="text-gray-800 capitalize text-lg font-medium">{item.name}</p>
                                                     <p className='text-red-500 font-normal'>₦{item.price.formatted}</p>

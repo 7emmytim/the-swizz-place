@@ -1,24 +1,12 @@
 import { message } from 'antd'
-import { useRouter } from 'next/router'
 import Layout from '../../components/General/Layout'
 import { useCart } from '../../context/cart'
-import { useProducts } from '../../context/products'
 
-const Product = () => {
+const Product = ({ product }) => {
 
     const [, cartAction] = useCart()
-    const router = useRouter()
-    const { slug } = router.query
 
-    const [products] = useProducts()
-
-    const product = products.find(item => item.id === slug)
-
-    if (!product) {
-        return <div>Product Not Found</div>
-    }
-
-    const productPrice = products && product.price.formatted.split('.')
+    const productPrice = product.price.formatted.split('.')
 
     return (
         <Layout>
@@ -27,7 +15,7 @@ const Product = () => {
                     <div className="md:flex items-center -mx-10">
                         <div className="w-full md:w-1/3 mb-10 md:mb-0">
                             <div>
-                                <img src={product.image.url} className="z-10" alt="" />
+                                <img src={`http://localhost:1337${product.image.data.attributes.url}`} className="z-10" alt="" />
                             </div>
                         </div>
                         <div className="w-full md:w-2/3 pl-10 pr-20 py-5">
@@ -51,15 +39,41 @@ const Product = () => {
             </div>
 
             {/* <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES --> */}
-            {/* <div className="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+            <div className="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
                 <div>
-                    <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" rel='noreferrer' target="_blank" className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+                    <a title="Buy me a beer" href="" rel='noreferrer' className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
                         <img className="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" />
                     </a>
                 </div>
-            </div> */}
+            </div>
         </Layout >
     )
+}
+
+export async function getStaticProps({ params }) {
+    const res = await fetch(`http://localhost:1337/api/products/${params.slug}?populate=image`)
+    const json = await res.json()
+
+    return {
+        props: {
+            product: { ...json.data.attributes, id: json.data.id },
+        },
+    }
+}
+
+export async function getStaticPaths() {
+    const res = await fetch(`http://localhost:1337/api/products/?populate=image`)
+    const json = await res.json()
+
+    return {
+        paths: json.data.map(product => {
+            const slug = `${product.id}`
+            return {
+                params: { slug }
+            }
+        }),
+        fallback: false
+    }
 }
 
 export default Product
