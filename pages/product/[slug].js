@@ -15,7 +15,7 @@ const Product = ({ product }) => {
                     <div className="md:flex items-center -mx-10">
                         <div className="w-full md:w-1/3 mb-10 md:mb-0">
                             <div>
-                                <img src={`http://localhost:1337${product.image.data.attributes.url}`} className="z-10" alt="" />
+                                <img src={`https://immense-crag-15942.herokuapp.com${product.image.data.attributes.url}`} className="z-10" alt="" />
                             </div>
                         </div>
                         <div className="w-full md:w-2/3 pl-10 pr-20 py-5">
@@ -51,7 +51,7 @@ const Product = ({ product }) => {
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(`http://localhost:1337/api/products/${params.slug}?populate=image`)
+    const res = await fetch(`https://immense-crag-15942.herokuapp.com/api/products/${params.slug}?populate=image`)
     const json = await res.json()
 
     return {
@@ -62,7 +62,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const res = await fetch(`http://localhost:1337/api/products/?populate=image`)
+    const res = await fetch(`https://immense-crag-15942.herokuapp.com/api/products/?populate=image`)
     const json = await res.json()
 
     return {

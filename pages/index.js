@@ -12,7 +12,7 @@ const Home = ({products}) => {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:1337/api/products?populate=image')
+  const res = await fetch('https://immense-crag-15942.herokuapp.com/api/products?populate=image')
   const json = await res.json()
 
   return {

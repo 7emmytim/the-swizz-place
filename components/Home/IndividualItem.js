@@ -17,7 +17,7 @@ const IndividualItem = ({ product }) => {
                         height={70}
                         layout='responsive'
                         className='h-40 rounded-2xl w-full object-cover'
-                        src={`http://localhost:1337${product.image.data.attributes.url}`}
+                        src={`https://immense-crag-15942.herokuapp.com${product.image.data.attributes.url}`}
                         alt='Shopping cart'
                     />
                     {
