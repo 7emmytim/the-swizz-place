@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .remove-link-decoration a:hover {
-    color: #FFFFFF;
+    color: inherit;
 }
