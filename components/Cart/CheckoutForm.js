@@ -21,7 +21,7 @@ const CheckoutForm = ({ saveUser, prev, user }) => {
                     phone: user.phone
                 }}
             >
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-x-5'>
+                <div className='md:w-4/5 lg:w-3/5 mx-auto'>
                     <div>
                         <Form.Item label='First name' name='first_name' rules={[{ required: true, message: 'Please input your first name' }]}>
                             <Input size='large' />
@@ -46,12 +46,12 @@ const CheckoutForm = ({ saveUser, prev, user }) => {
 
 
 
-                <div className='mt-5'>
-                    <Button type='primary' htmlType='submit'>
-                        PROCEED
-                    </Button>
+                <div className='mt-5 text-center'>
                     <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
                         GO BACK
+                    </Button>
+                    <Button type='primary' htmlType='submit'>
+                        PROCEED
                     </Button>
                 </div>
             </Form>

@@ -1,7 +1,9 @@
+import commerce from '../lib/commerce'
 import Layout from '../components/General/Layout'
 import ItemsList from '../components/Home/ItemsList'
 
-const Home = ({products}) => {
+const Home = ({ products }) => {
+
   return (
     <>
       <Layout>
@@ -12,13 +14,13 @@ const Home = ({products}) => {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://immense-crag-15942.herokuapp.com/api/products?populate=image')
-  const json = await res.json()
+
+  const { data: products } = await commerce.products.list()
 
   return {
     props: {
-      products: json.data,
-    },
+      products
+    }
   }
 }
 

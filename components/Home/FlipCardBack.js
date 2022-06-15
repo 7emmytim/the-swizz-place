@@ -12,7 +12,7 @@ const FlipCardBack = ({ product, handleFlip }) => {
             <div className='relative bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer'>
                 <div className='overflow-x-hidden rounded-2xl h-[15rem] p-4 space-y-2'>
                     <div className='bg-white rounded-full h-8 w-8 cursor-pointer ml-auto'>
-                        <img src={`https://immense-crag-15942.herokuapp.com${product.image.data.attributes.url}`} className='rounded-full w-8 h-8 object-cover' />
+                        <img src={product.image.url} className='rounded-full w-8 h-8 object-cover' />
                     </div>
                     <div className='text-right text-gray-500' dangerouslySetInnerHTML={{ __html: product.description }} />
                 </div>

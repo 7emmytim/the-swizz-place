@@ -8,7 +8,7 @@ const ItemsList = ({ products }) => {
                 {
                     products.map(product => {
                         return (
-                            <IndividualItem key={product.id} product={{ ...product.attributes, id: product.id }} />
+                            <IndividualItem key={product.id} product={product} />
                         )
                     })
                 }

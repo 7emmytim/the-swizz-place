@@ -16,7 +16,7 @@ const FlipCardFront = ({ product, handleFlip }) => {
                         height={70}
                         layout='responsive'
                         className='h-40 rounded-2xl w-full object-cover'
-                        src={`https://immense-crag-15942.herokuapp.com${product.image.data.attributes.url}`}
+                        src={product.image.url}
                         alt='Shopping cart'
                     />
                     <div className='absolute right-2 top-2 bg-white rounded-full h-8 w-8 cursor-pointer group flex items-center justify-center'>

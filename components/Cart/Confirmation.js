@@ -89,12 +89,12 @@ const Confirmation = ({ subtotal, prev, user, next }) => {
                             </div>
                         </section>
                     </div>
-                    <div className='mt-5'>
-                        <Button type='primary' onClick={() => initializePayment(onSuccess, onClose)}>
-                            MAKE PAYMENT
-                        </Button>
+                    <div className='mt-5 text-center'>
                         <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
                             GO BACK
+                        </Button>
+                        <Button type='primary' onClick={() => initializePayment(onSuccess, onClose)}>
+                            MAKE PAYMENT
                         </Button>
                     </div>
                 </div>

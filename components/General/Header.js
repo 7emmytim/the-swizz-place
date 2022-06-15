@@ -16,13 +16,13 @@ const Header = () => {
             </div>
             <div className='ml-auto'>
                 <Link href='/cart' passHref>
-                    <Badge size="default" count={cart.length}>
+                    <Badge size='default' count={cart.length}>
                         <ShoppingBagIcon className='w-7 h-7' />
                     </Badge>
-                    {/* <span className="relative inline-block">
+                    {/* <span className='relative inline-block'>
                         <ShoppingBagIcon className='w-7 h-7' />
                         <span
-                            className="absolute -top-2 right-0 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">9</span>
+                            className='absolute -top-2 right-0 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full'>9</span>
                     </span> */}
                 </Link>
             </div>
